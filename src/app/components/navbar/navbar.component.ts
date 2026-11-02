@@ -33,6 +33,6 @@ export class NavbarComponent {
 
   onLogout(): void {
     this.closeDropdown();
-    this.authService.logout().subscribe();
+    this.authService.logout();
   }
 }
