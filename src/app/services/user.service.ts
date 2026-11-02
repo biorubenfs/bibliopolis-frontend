@@ -23,8 +23,7 @@ export class UserService {
   updateProfile(data: UpdateProfileDto): Observable<void> {
     return this.http.patch<void>(
       `${environment.apiUrl}/users/me`,
-      data,
-      { withCredentials: true }
+      data
     ).pipe(
       catchError(this.handleError)
     );
@@ -33,8 +32,7 @@ export class UserService {
   updatePassword(data: UpdatePasswordDto): Observable<void> {
     return this.http.patch<void>(
       `${environment.apiUrl}/users/me/password`,
-      data,
-      { withCredentials: true }
+      data
     ).pipe(
       catchError(this.handleError)
     );
@@ -46,7 +44,7 @@ export class UserService {
       url += `&search=${encodeURIComponent(search.trim())}`;
     }
     
-    return this.http.get<UserBooksResponse>(url, { withCredentials: true }).pipe(
+    return this.http.get<UserBooksResponse>(url).pipe(
       catchError(this.handleError)
     );
   }

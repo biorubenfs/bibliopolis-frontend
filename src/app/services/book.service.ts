@@ -19,10 +19,7 @@ export class BookService {
 
     return this.http.get<BooksResponse>(
       `${environment.apiUrl}/books`,
-      { 
-        params,
-        withCredentials: true 
-      }
+      { params }
     ).pipe(
       catchError(this.handleError)
     );
@@ -31,8 +28,7 @@ export class BookService {
   updateUserBook(userBookId: string, data: UpdateUserBookDto): Observable<UserBookResponse> {
     return this.http.patch<UserBookResponse>(
       `${environment.apiUrl}/user-books/${userBookId}`,
-      data,
-      { withCredentials: true }
+      data
     ).pipe(
       catchError(this.handleError)
     );
@@ -43,10 +39,7 @@ export class BookService {
 
     return this.http.get<ExternalBookResponse>(
       `${environment.apiUrl}/external`,
-      {
-        params,
-        withCredentials: true
-      }
+      { params }
     ).pipe(
       catchError(this.handleError)
     );

@@ -24,10 +24,7 @@ export class LibraryService {
 
     return this.http.get<LibrariesResponse>(
       `${environment.apiUrl}/libraries`,
-      { 
-        params,
-        withCredentials: true 
-      }
+      { params }
     ).pipe(
       catchError(this.handleError)
     );
@@ -35,8 +32,7 @@ export class LibraryService {
 
   getLibrary(libraryId: string): Observable<LibraryResponse> {
     return this.http.get<LibraryResponse>(
-      `${environment.apiUrl}/libraries/${libraryId}`,
-      { withCredentials: true }
+      `${environment.apiUrl}/libraries/${libraryId}`
     ).pipe(
       catchError(this.handleError)
     );
@@ -50,10 +46,7 @@ export class LibraryService {
 
     return this.http.get<UserBooksResponse>(
       `${environment.apiUrl}/user-books`,
-      { 
-        params,
-        withCredentials: true 
-      }
+      { params }
     ).pipe(
       catchError(this.handleError)
     );
@@ -62,8 +55,7 @@ export class LibraryService {
   createLibrary(library: CreateLibraryDto): Observable<LibraryResponse> {
     return this.http.post<LibraryResponse>(
       `${environment.apiUrl}/libraries`,
-      library,
-      { withCredentials: true }
+      library
     ).pipe(
       catchError(this.handleError)
     );
@@ -72,8 +64,7 @@ export class LibraryService {
   updateLibrary(libraryId: string, library: CreateLibraryDto): Observable<LibraryResponse> {
     return this.http.patch<LibraryResponse>(
       `${environment.apiUrl}/libraries/${libraryId}`,
-      library,
-      { withCredentials: true }
+      library
     ).pipe(
       catchError(this.handleError)
     );
@@ -81,8 +72,7 @@ export class LibraryService {
 
   deleteLibrary(libraryId: string): Observable<void> {
     return this.http.delete<void>(
-      `${environment.apiUrl}/libraries/${libraryId}`,
-      { withCredentials: true }
+      `${environment.apiUrl}/libraries/${libraryId}`
     ).pipe(
       catchError(this.handleError)
     );
@@ -90,8 +80,7 @@ export class LibraryService {
 
   removeBookFromLibrary(libraryId: string, bookId: string): Observable<void> {
     return this.http.delete<void>(
-      `${environment.apiUrl}/libraries/${libraryId}/books/${bookId}`,
-      { withCredentials: true }
+      `${environment.apiUrl}/libraries/${libraryId}/books/${bookId}`
     ).pipe(
       catchError(this.handleError)
     );
@@ -100,8 +89,7 @@ export class LibraryService {
   addBookToLibrary(libraryId: string, data: AddBookToLibraryDto): Observable<void> {
     return this.http.post<void>(
       `${environment.apiUrl}/libraries/${libraryId}/books`,
-      data,
-      { withCredentials: true }
+      data
     ).pipe(
       catchError(this.handleError)
     );
@@ -114,7 +102,6 @@ export class LibraryService {
       .set('format', format);
     return this.http.get(url, {
       params,
-      withCredentials: true,
       responseType: 'blob'
     }).pipe(
       catchError(this.handleError)
